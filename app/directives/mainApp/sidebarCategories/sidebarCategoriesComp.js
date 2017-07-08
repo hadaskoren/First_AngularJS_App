@@ -1,15 +1,21 @@
-angular.module('x')
-    .directive("sidebarCategories", function() {
-        return {
-            restrict: "E",
+angular.module('Eggly')
+    .component("sidebarCategories", {
             templateUrl: "app/directives/mainApp/sidebarCategories/sidebarCategories.html",
-            controller: function($scope) {
-                $scope.categories = [
-                    {"id": 0, "name": "Development"},
-                    {"id": 1, "name": "Design"},
-                    {"id": 2, "name": "Exercise"},
-                    {"id": 3, "name": "Humor"},
-                ];
+            bindings: {
+                setCurrentCategory: '&',
+                isCurrentCategory: '&',
+                categories: '<'
+            },
+            controller: function() {
+                var ctrl = this;
+
+
+                ctrl.setCategory = function(category) {
+                    ctrl.setCurrentCategory({category:category});
+                };
+
+                ctrl.checkCategory = function(category) {
+                    ctrl.isCurrentCategory({category:category});
+                }
             }
-        }
     });

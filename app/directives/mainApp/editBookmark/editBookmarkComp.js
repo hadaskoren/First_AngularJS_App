@@ -1,21 +1,26 @@
-angular.module('x')
-    .directive("editBookmark", function() {
-        return {
-            restrict: "E",
+angular.module('Eggly')
+    .component("editBookmark", {
             templateUrl: "app/directives/mainApp/editBookmark/editBookmark.html",
-            controller: function($scope) {
+            bindings: {
+                bookmarks: '<',
+                shouldShowEditing: '&',
+                editedBookmark: '<',
+                editBookmark: '&',
+                cancelEditing: '&'
+            },
+            controller: function() {
 
-                function updateBookmark(bookmark) {
-                    var index = _.findIndex($scope.bookmarks, function (currBookmark) {
+                var ctrl = this;
+
+                ctrl.$onInit = function () {
+                    var x = ctrl;
+                };
+
+                ctrl.updateBookmark = function(bookmark) {
+                    var index = _.findIndex(ctrl.bookmarks, function (currBookmark) {
                         return currBookmark.id === bookmark.id;
-                    })
-                    $scope.bookmarks[index] = bookmark;
-
-                    $scope.editedBookmark = null;
-                    cancelEditing();
+                    });
+                    ctrl.editBookmark({index:index,bookmark:bookmark});
                 }
-
-                $scope.updateBookmark = updateBookmark;
             }
-        }
     });

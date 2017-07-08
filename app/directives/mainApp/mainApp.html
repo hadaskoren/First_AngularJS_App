@@ -1,65 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2 sidebar col-height">
-                <a href="#" ng-click="setCurrentCategory(null)"><img class="logo" src="assets/img/eggly-logo.png"></a>
-                <ul class="nav nav-sidebar">
-                    <li ng-repeat="category in categories" ng-class="{'active': isCurrentCategory(category)}">
-                        <a href="#" ng-click="setCurrentCategory(category.name)">{{category.name}}</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-12 main">
-                <div ng-class="{'active': isSelectedBookmark(bookmark.id)}" ng-repeat="bookmark in bookmarks | filter:{category:currentCategory}">
-                    <button type="button" class="close" ng-click="deleteBookmark(bookmark)">&times;</button>
-                    {{bookmark.category.name}}
-                    <button type="button" ng-click="setEditedBookmark(bookmark); startEditing();" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
-                </div>
-                <hr/>
-                <!--CREATING -->
-                <div ng-if="shouldShowCreating()">
-                    <button type="button" class="btn btn-link" ng-click="startCreating(newBookmark);">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        Create Bookmark
-                    </button>
-                </div>
-                <form class="create-form" ng-show="isCreating" role="form" ng-submit="createBookmark(newBookmark)" novalidate>
-                    <div class="form-group">
-                        <label for="newBookmarkTitle">Bookmark Title</label>
-                        <input type="text" class="form-control" id="newBookmarkTitle" ng-model="newBookmark.title">
-                    </div>
-                    <div class="form-group">
-                        <label for="newBookmarkURL">Bookmark URL</label>
-                        <input type="text" class="form-control" id="newBookmarkURL" ng-model="newBookmark.url">
-                    </div>
-                    <button type="submit" class="btn btn-info btn-lg">Create</button>
-                    <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
-                </form>
-                <!--Editing -->
-                <div ng-if="shouldShowEditing()">
-                    <h4>Editing {{editedBookmark.title}}</h4>
-                    <form class="edit-form" role="form" ng-submit="updateBookmark(editedBookmark)" novalidate>
-                        <div class="form-group">
-                            <label>Bookmark Title</label>
-                            <input type="text" class="form-control" ng-model="editedBookmark.title">
-                        </div>
-                        <div class="form-group">
-                            <label>Bookmark URL</label>
-                            <input type="text" class="form-control" ng-model="editedBookmark.url">
-                        </div>
-                        <button type="submit" class="btn btn-info btn-lg">Save</button>
-                        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Cancel</button>
-                    </form>
-                </div>
-            </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar col-height">
+            <sidebar-categories categories="$ctrl.categories" set-current-category="$ctrl.setCurrentCategory(category)"
+                                is-current-category="$ctrl.isCurrentCategory(category)"></sidebar-categories>
+        </div>
+
+        <div class="col-md-12 main">
+            <bookmark-list bookmarks="$ctrl.bookmarks" current-category="$ctrl.currentCategory"
+                           start-editing="$ctrl.startEditing()" is-selected-bookmark="isSelectedBookmark(bookmarkId)"
+                           edited-bookmark ="$ctrl.editedBookmark" current-edited-bookmark="$ctrl.currentEditedBookmark(editedBookmark)"></bookmark-list>
+            <hr/>
+            <!--CREATING -->
+            <create-bookmark start-creating="$ctrl.startCreating()" cancel-creating="$ctrl.cancelCreating()"
+                             adding-new-bookmark="$ctrl.addingNewBookmark(bookmark)" current-category="$ctrl.currentCategory"
+                             is-creating="$ctrl.isCreating" should-show-creating="$ctrl.shouldShowCreating()"
+                             new-bookmark="$ctrl.newBookmark"></create-bookmark>
+
+            <!--Editing -->
+            <edit-bookmark edited-bookmark="$ctrl.editedBookmark" edit-bookmark="$ctrl.editBookmark(index,bookmark)"
+                           should-show-editing="$ctrl.shouldShowEditing()" cancel-editing="$ctrl.cancelEditing()"
+                           bookmarks="$ctrl.bookmarks"></edit-bookmark>
         </div>
     </div>
-</body>
-</html>
+</div>

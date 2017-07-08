@@ -1,19 +1,28 @@
-angular.module('x')
-    .directive("createBookmark", function() {
-        return {
-            restrict: "E",
+angular.module('Eggly')
+    .component("createBookmark", {
             templateUrl: "app/directives/mainApp/createBookmark/createBookmark.html",
-            controller: function($scope) {
-                function createBookmark(bookmark) {
-                    $scope.newBookmark.title = bookmark.title;
-                    $scope.newBookmark.url = bookmark.url;
-                    $scope.newBookmark.category = $scope.currentCategory;
-                    $scope.bookmarks.push($scope.newBookmark);
-                    setCurrentCategory($scope.currentCategory);
-                    resetCreateForm();
-                }
+            bindings: {
+                shouldShowCreating: '&',
+                startCreating: '&',
+                isCreating: '<',
+                newBookmark: '<',
+                cancelCreating: '&',
+                addingNewBookmark: '&',
+                currentCategory: '<'
+            },
+            controller: function() {
 
-                $scope.createBookmark = createBookmark;
+                var ctrl = this;
+
+                ctrl.$onInit = function () {
+                    var x = ctrl;
+                };
+
+                ctrl.createBookmark = function(bookmark) {
+                    ctrl.newBookmark.title = bookmark.title;
+                    ctrl.newBookmark.url = bookmark.url;
+                    ctrl.newBookmark.category = ctrl.currentCategory;
+                    ctrl.addingNewBookmark({bookmark:ctrl.newBookmark});
+                };
             }
-        }
     });

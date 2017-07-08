@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+<div ng-if="$ctrl.shouldShowCreating">
+    <button type="button" class="btn btn-link" ng-click="$ctrl.startCreating()">
+        <span class="glyphicon glyphicon-plus"></span>
+        Create Bookmark
+    </button>
+</div>
+<form class="create-form" ng-show=$ctrl.isCreating role="form" ng-submit="$ctrl.createBookmark($ctrl.newBookmark)" novalidate>
+    <div class="form-group">
+        <label for="newBookmarkTitle">Bookmark Title</label>
+        <input type="text" class="form-control" id="newBookmarkTitle" ng-model="$ctrl.newBookmark.title">
+    </div>
+    <div class="form-group">
+        <label for="newBookmarkURL">Bookmark URL</label>
+        <input type="text" class="form-control" id="newBookmarkURL" ng-model="$ctrl.newBookmark.url">
+    </div>
+    <button type="submit" class="btn btn-info btn-lg">Create</button>
+    <button type="button" class="btn btn-default btn-lg pull-right" ng-click="$ctrl.cancelCreating()">Cancel</button>
+</form>
