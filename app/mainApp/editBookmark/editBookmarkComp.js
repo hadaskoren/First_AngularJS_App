@@ -1,6 +1,5 @@
-angular.module('Eggly')
-    .component("editBookmark", {
-            templateUrl: "app/directives/mainApp/editBookmark/editBookmark.html",
+myApp.component("editBookmark", {
+            templateUrl: "app/mainApp/editBookmark/editBookmark.html",
             bindings: {
                 bookmarks: '<',
                 shouldShowEditing: '&',
@@ -11,6 +10,8 @@ angular.module('Eggly')
             controller: function() {
 
                 var ctrl = this;
+
+                console.log("editBookmark Comp");
 
                 ctrl.$onInit = function () {
                     var x = ctrl;

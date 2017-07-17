@@ -1,10 +1,11 @@
-angular.module('Eggly')
-    .component('mainApp', {
+myApp.component('mainApp', {
             restrict:"E",
-            templateUrl: "app/directives/mainApp/mainApp.html",
+            templateUrl: "app/mainApp/mainApp.html",
             controller: function () {
 
                 var ctrl = this;
+
+                console.log("mainApp Comp");
 
                 ctrl.categories = [
                     {"id": 0, "name": "Development"},

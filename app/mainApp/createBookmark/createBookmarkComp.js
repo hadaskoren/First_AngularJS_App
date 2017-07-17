@@ -1,6 +1,5 @@
-angular.module('Eggly')
-    .component("createBookmark", {
-            templateUrl: "app/directives/mainApp/createBookmark/createBookmark.html",
+myApp.component("createBookmark", {
+            templateUrl: "app/mainApp/createBookmark/createBookmark.html",
             bindings: {
                 shouldShowCreating: '&',
                 startCreating: '&',
@@ -13,6 +12,8 @@ angular.module('Eggly')
             controller: function() {
 
                 var ctrl = this;
+
+                console.log("createBookmark Comp");
 
                 ctrl.$onInit = function () {
                     var x = ctrl;

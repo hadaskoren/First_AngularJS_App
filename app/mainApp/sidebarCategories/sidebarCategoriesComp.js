@@ -1,6 +1,5 @@
-angular.module('Eggly')
-    .component("sidebarCategories", {
-            templateUrl: "app/directives/mainApp/sidebarCategories/sidebarCategories.html",
+myApp.component("sidebarCategories", {
+            templateUrl: "app/mainApp/sidebarCategories/sidebarCategories.html",
             bindings: {
                 setCurrentCategory: '&',
                 isCurrentCategory: '&',
@@ -9,6 +8,7 @@ angular.module('Eggly')
             controller: function() {
                 var ctrl = this;
 
+                console.log("sidebarCategories Comp");
 
                 ctrl.setCategory = function(category) {
                     ctrl.setCurrentCategory({category:category});
