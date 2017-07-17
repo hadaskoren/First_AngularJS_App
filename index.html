@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Eggly">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Eggly</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="assets/css/eggly.css">-->
+    <!--<link rel="stylesheet" href="assets/css/animations.css">-->
+</head>
+<body>
+    <ui-view></ui-view>
+    <!--<main-app></main-app>-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <script src="eggly-app.start.js"></script>
+    <!--<script src="app/directives/mainApp/mainAppDrtv.js"></script>-->
+    <!--<script src="app/directives/mainApp/createBookmark/createBookmarkDrtv.js"></script>-->
+    <!--<script src="app/directives/mainApp/editBookmark/editBookmarkDrtv.js"></script>-->
+    <!--<script src="app/directives/mainApp/sidebarCategories/sidebarCategoriesDrtv.js"></script>-->
+    <!--<script src="app/directives/mainApp/bookmarkList/bookmarkListDrtv.js"></script>-->
+
+    <script src="app/mainApp/mainAppComp.js"></script>
+    <script src="app/mainApp/createBookmark/createBookmarkComp.js"></script>
+    <script src="app/mainApp/editBookmark/editBookmarkComp.js"></script>
+    <script src="app/mainApp/sidebarCategories/sidebarCategoriesComp.js"></script>
+    <script src="app/mainApp/bookmarkList/bookmarkListComp.js"></script>
+    <script src="app/mainApp/bookmarkList/bookmarkListCtrl.js"></script>
+
+    <script src="app/services/dataService.js"></script>
+    <script src="app/factories/dataFactory.js"></script>
+    <script src="app/providers/dataProvider.js"></script>
+</body>
+</html>
